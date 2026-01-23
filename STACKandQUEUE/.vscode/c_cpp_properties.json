@@ -11,7 +11,7 @@
                 "_UNICODE"
             ],
             "compilerPath": "C:/TDM-GCC-64/bin/gcc.exe",
-            "intelliSenseMode": "windows-msvc-x64"
+            "intelliSenseMode": "linux-gcc-x64"
         }
     ],
     "version": 4
