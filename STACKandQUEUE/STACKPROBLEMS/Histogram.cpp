@@ -46,3 +46,32 @@ int largestRectangleArea(vector<int>& heights) {
         }
         return maxA;
     }
+
+     int largestRectangleAreaBest(vector<int>& heights) {
+        int n = heights.size(),maxA=0;
+        stack<int> st;
+        for(int i=0;i<n;i++){
+            while(!st.empty()&&heights[st.top()]>heights[i]){
+                int nse =i;
+                int element=heights[st.top()];
+                st.pop();
+                int pse=!st.empty()?st.top():-1;
+                maxA=max(maxA,(nse-pse-1)*element);
+            }
+            st.push(i);
+        }
+        while(!st.empty()){
+            int nse=n;
+            int element=heights[st.top()];st.pop();
+            int pse=!st.empty()?st.top():-1;
+            maxA=max(maxA,(nse-pse-1)*element);
+        }
+        return maxA;
+    }
+int main() {
+    vector<int> heights = {2, 1, 5, 6,  7, 3, 4,3};
+    cout << "Largest Rectangle Area (Brute Force): " << largestRectangleArea(heights) << endl;
+    cout << "Largest Rectangle Area (Better): " << largestRectangleAreaBetter(heights) << endl;
+    cout << "Largest Rectangle Area (Best): " << largestRectangleAreaBest(heights) << endl;
+    return 0;
+}       
