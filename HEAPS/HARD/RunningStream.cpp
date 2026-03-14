@@ -1,0 +1,39 @@
+#include <bits/stdc++.h>
+using namespace std;    
+class KthLargest {
+    int size;
+    priority_queue<int,vector<int>,greater<int>>pq;
+public:
+
+    KthLargest(int k, vector<int>& nums) {
+        size=k;
+        for(int num:nums){
+            pq.push(num);
+            if(pq.size()>k){
+                pq.pop();
+            }
+        }
+    }
+    
+    int add(int val) {
+        pq.push(val);
+         if(pq.size()>size){
+             pq.pop();
+            }
+            return pq.top();
+    }
+};
+
+int 
+main(){
+    
+vector<int> nums = {4,5,8,2};
+KthLargest k(3, nums);
+    cout<<k.add(3)<<endl;
+    cout<<k.add(5)<<endl;
+    cout<<k.add(10)<<endl;
+    cout<<k.add(9)<<endl;
+    cout<<k.add(4)<<endl;
+    cout<<k.add(11)<<endl;
+    return 0;
+}
